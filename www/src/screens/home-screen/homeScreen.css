@@ -1,0 +1,11 @@
+.set-image {
+  width: 50vw;
+  height: 50vh;
+}
+
+.align-div {
+  display: flex;
+  height: 90vh;
+  align-items: center;
+  justify-content: center;
+}

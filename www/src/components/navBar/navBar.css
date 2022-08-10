@@ -1,0 +1,15 @@
+.text-white {
+    color: white;
+}
+
+.align-menu-option {
+    margin: 0px 20px;
+}
+
+.no-underline {
+    text-decoration: none;
+}
+
+.set-nav {
+    display: flex;
+}

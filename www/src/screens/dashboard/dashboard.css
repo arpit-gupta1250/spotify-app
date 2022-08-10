@@ -1,0 +1,15 @@
+.align-signed-in {
+  display: flex;
+  justify-content: end;
+  margin-bottom: 40px;
+}
+
+.align-playlist {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.set-playlist {
+  width: 200px;
+}
