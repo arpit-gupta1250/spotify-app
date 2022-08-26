@@ -1,10 +1,19 @@
 import UrlHelper from '../../helpers/urlHelper';
-import './login.css';
 import Button from '@mui/material/Button';
+import { useNavigate } from 'react-router-dom';
+import './login.css';
 
-export default function Login() {
-  function navigateToSpotifyLoginPage() {
-    window.location.href = UrlHelper.getSpotifyAuthorizeUrl();
+const Login = () => {
+  const navigate = useNavigate();
+  const loggedInUserEmail = window.localStorage.getItem("loggedInEmail");
+
+  const navigateToSpotifyLoginPage = () => {
+    if (loggedInUserEmail) {
+      navigate('/');
+      console.log('---------------------------1111')
+    } else {
+      window.location.href = UrlHelper.getSpotifyAuthorizeUrl();
+    }
   }
 
   return (
@@ -18,3 +27,5 @@ export default function Login() {
     </div>
   );
 }
+
+export default Login;

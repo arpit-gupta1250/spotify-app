@@ -1,3 +1,3 @@
-let users = [];
+let users = {};
 
 module.exports = users;

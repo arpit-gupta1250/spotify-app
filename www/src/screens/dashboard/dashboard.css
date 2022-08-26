@@ -5,11 +5,24 @@
 }
 
 .align-playlist {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 40px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 40%;
+  width: fit-content;
+  padding: 30px 100px;
+}
+
+.align-playlist:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  color: green;
 }
 
 .set-playlist {
   width: 200px;
+}
+
+.align-category {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }

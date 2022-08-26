@@ -1,4 +1,4 @@
-function ContactScreen() {
+const ContactScreen = () => {
   return <div>Contact Screen</div>;
 }
 

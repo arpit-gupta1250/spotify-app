@@ -1,4 +1,4 @@
-function PolicyScreen() {
+const PolicyScreen = () => {
   return <div>Policy Screen</div>;
 }
 

@@ -4,23 +4,26 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from './screens/dashboard/dashboard';
 import ContactScreen from './screens/contact-screen/contactScreen';
 import PolicyScreen from './screens/policy-screen/policyScreen';
+import SongsCategory from './components/songsCategory/songsCategory';
 import './app.css';
+import React from 'react';
 
-function App() {
+const App = () => {
   return (
-    <div>
+    <React.Fragment>
       <BrowserRouter>
         <NavBar></NavBar>
         <div className='align-main-section'>
           <Routes>
             <Route exact path="/" element={ <HomeScreen></HomeScreen> } />
-            <Route exact path="/authorized" element={ <Dashboard></Dashboard> } />
+            <Route exact path="/dashboard" element={ <Dashboard></Dashboard> } />
             <Route exact path="/contact" element={ <ContactScreen></ContactScreen> } />
             <Route exact path="/policy" element={ <PolicyScreen></PolicyScreen> } />
+            <Route exact path="/songs/:category" element={ <SongsCategory></SongsCategory> } />
           </Routes>
         </div>
       </BrowserRouter>
-    </div>
+    </React.Fragment>
   );
 }
 

@@ -13,7 +13,6 @@ app.use((request, response, next) => {
   next();
 });
 
-
 app.use(authRoutes);
 app.use('/songs', songsRoutes);
 

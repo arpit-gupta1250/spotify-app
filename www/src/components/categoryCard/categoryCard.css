@@ -1,0 +1,40 @@
+.playlist-card {
+  width: 200px;
+  height: 350px;
+}
+
+.no-margin {
+  margin: 0px;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-description {
+  padding: 5px;
+}
+
+.align-label {
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  padding: 30px 100px;
+  margin-bottom: 20px;
+}
+
+.align-categories {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  row-gap: 30px;
+}
+
+.align-playlist-div {
+  display: flex;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+.align-card-content {
+  padding: 10px;
+}

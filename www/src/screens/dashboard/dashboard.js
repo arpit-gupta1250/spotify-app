@@ -1,67 +1,42 @@
-import { useLocation } from "react-router-dom";
-import axios from "axios";
-import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import './dashboard.css';
-import Card from '@mui/material/Card';
-import Playlist from "../../components/playlist/playlist";
+import React from "react";
+import { useSelector } from "react-redux";
+import Loader from '../../components/loader/loader';
 
-function Dashboard() {
-  const [newReleases, setNewReleases] = useState({ albums: "" });
-  const [isNewReleasesLoaded, setIsNewReleasesLoaded] = useState(false);
+const Dashboard = () => {
+  const navigate = useNavigate();
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  console.log('----------------isLoggedIn--------------------', isLoggedIn);
 
-  const query = useLocation().search;
-  const email = getUserEmail(query);
+  const goToTopPlaylists = () => {
+    navigate('/songs/top-playlists');
+  };
 
-  useEffect(() => {
-    getNewReleases(email)
-      .then(response => {
-        setIsNewReleasesLoaded(true);
-        setNewReleases(response);
-        console.log('--------------', newReleases);
-      })
-      .catch(error => console.log(error))
-  }, [isNewReleasesLoaded]);
+  const goToNewReleases = () => {
+    navigate('/songs/new-releases');
+  };
 
   return (
-    <div>
+    <React.Fragment>
       <div className="align-signed-in">
-        <h4>Signed In Through : {email}</h4>
+        {/* <h4>Signed In Through : {email}</h4> */}
+        <h4>IsLoggedIn : {String(isLoggedIn)}</h4>
       </div>
 
-      <div className="align-playlist">
-        <Playlist heading={'Top 20 Weekly'}></Playlist>
-        <Playlist heading={'Top 100 Monthly'}></Playlist>
-      </div>
+      {/* <Loader></Loader> */}
 
-      {/* <div className="align-playlist">
-        <Playlist heading={'Top 20 Weekly'}></Playlist>
-        <Playlist heading={'Top 100 Monthly'}></Playlist>
-      </div> */}
-
-      { newReleases.playlists &&
-        <div>
-          <div style={{width: 'fit-content'}}>
-            <img 
-              src={ newReleases.playlists.items[0].images[0].url } 
-              alt="playlist" 
-              height={200} 
-              width={200}
-            ></img>
-            <p style={{'margin': '0px', 'textAlign': 'center'}}>{ newReleases.playlists.items[0].name }</p>
-          </div>
+      <div className="align-category">
+        <div className="align-playlist" onClick={goToTopPlaylists}>
+          Top Playlists
         </div>
-      }
-    </div>
+
+        <div className="align-playlist" onClick={goToNewReleases}>
+          New Releases
+        </div>
+      </div>
+    </React.Fragment>
   );
-}
-
-function getUserEmail(query) {
-  return new URLSearchParams(query).get("email");
-}
-
-async function getNewReleases(email) {
-  const response = await axios.get(`http://localhost:5000/songs/new-releases?email=${email}`);
-  return response.data;
 }
 
 export default Dashboard;

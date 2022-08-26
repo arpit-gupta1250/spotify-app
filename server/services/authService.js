@@ -1,13 +1,18 @@
 const axios = require('axios');
 const env = require('../config/env');
-const db = require('../secrets');
+const users = require('../users');
 
 module.exports = {
   async saveAuthorizationToken(authorizationCode) {
     const authorizationToken = await getAuthorizationToken(authorizationCode);
     const userEmail = await getUserEmail(authorizationToken);
-    db.push({ email: userEmail, token: authorizationToken });
+    users[userEmail] = authorizationToken;
     return { email: userEmail, message: "success" };
+  },
+
+  logout(email) {
+    delete users[email];
+    return { message: "Success" };
   },
 };
 
